@@ -1,0 +1,111 @@
+.contact-info-table {
+  @apply w-full;
+  & tr {
+    @apply odd:bg-black/10;
+  }
+  & td {
+    @apply align-top p-3;
+  }
+}
+
+.mobile-nav {
+  @apply absolute bottom-0 left-0 w-full bg-teal-700 z-0 transition-all duration-75 px-4 py-1;
+  &.is-open {
+    @apply -bottom-[184px] transition-all duration-75;
+  }
+  & ul li {
+    @apply py-2 border-b border-white/50 last:border-none;
+  }
+}
+.desktop-nav {
+  @apply flex-1;
+  & ul {
+    @apply flex gap-6 items-center;
+  }
+}
+
+.left-content {
+  text-align: right;
+  font-size: smaller;
+  @media (min-width: 768px) {
+    position: sticky;
+    top: 0;
+    max-height: calc(100vh - 100px);
+  }
+}
+.project-overview {
+  & p,
+  & hr {
+    @apply my-4;
+  }
+  & ul p {
+    @apply my-0;
+  }
+  & h3 {
+    @apply mb-2;
+  }
+  & a {
+    @apply text-emerald-600;
+  }
+  & a:hover {
+    @apply text-emerald-200;
+  }
+  & h4 {
+    @apply text-4xl;
+  }
+  & p {
+    @apply font-light;
+  }
+}
+.project-img {
+  transform: perspective(400px) rotate3d(0, 0, 0, calc(var(--i, 1) * 8deg));
+  mask: linear-gradient(135deg, #000c 40%, #000, #000c 60%) 100% 100% / 240%
+    240%;
+  transition: transform 0.4s, mask-position 0.4s;
+  cursor: pointer;
+}
+
+.project-img:hover {
+  --i: -1;
+  mask-position: 0 0;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-out forwards;
+  opacity: 0; /* Ensure elements are initially hidden */
+  visibility: hidden;
+}
+
+.delay-1s {
+  animation-delay: 1s;
+}
+
+.delay-2s {
+  animation-delay: 2s;
+}
