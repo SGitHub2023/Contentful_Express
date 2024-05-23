@@ -1,13 +1,17 @@
 import contentful from 'contentful';
 import express from 'express';
 import cors from 'cors';
+import * as dotenv from 'dotenv'
 
 const { createClient } = contentful;
+dotenv.config();
 const app = express();
-const PORT = 8000;
+
+//const PORT = process.env.port || 3000;
+const port = 8000;
 const client = createClient({
-	space: 'wxpxksaaxofc',
-	accessToken: 'HqdGmItCuT9U7tSpBWQhOu0k7TbV9xZcsYKoaluSTqQ',
+	space: process.env.VITE_CONTENTFUL_SPACE_ID,
+	accessToken: process.env.VITE_CONTENTFUL_ACCESS_TOKEN
 });
 
 // Set headers for CORS policy due to localhost environment
@@ -79,4 +83,4 @@ app.get('/contentful/projects/:slug', async (req, res) => {
 	}
 });
 
-app.listen(PORT, () => console.log(`Server is running on PORT:${PORT}`));
+app.listen(port, () => console.log(`Server is running on PORT:${port}`));
