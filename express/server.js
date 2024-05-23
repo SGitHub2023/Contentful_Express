@@ -7,8 +7,7 @@ const { createClient } = contentful;
 dotenv.config();
 const app = express();
 
-//const PORT = process.env.port || 3000;
-const port = 8000;
+const port = process.env.PORT;
 const client = createClient({
 	space: process.env.VITE_CONTENTFUL_SPACE_ID,
 	accessToken: process.env.VITE_CONTENTFUL_ACCESS_TOKEN
